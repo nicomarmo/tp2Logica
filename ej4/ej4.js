@@ -14,10 +14,19 @@ let anos;
 let altura;
 let opcion;
 let total = 0;
-
+let muj25 = 0; 
+let hom18 = 0; 
+let mujAge = [];
+let mujeres = 0;
+let porcenMujAge;
 let mh = [];
 let edades = [];
 let medidas = [];
+let homAlt = [];
+let hombres = 0;
+let edadMin = 0; 
+let medidaMax = 0;
+
 do{
     sexo = prompt('Sexo de la persona? (H/M)');
     mh.push(sexo);
@@ -27,19 +36,75 @@ do{
     medidas.push(altura);
     opcion = confirm("Queres ingresar otra persona?");
     total++;
-}while(opcion == true)
-
-
-let muj25 = 0; 
-
-for(let i = 0; i < mh.length; i++){
+    
     if(sexo == 'm' && anos >= 25){
-        muj25 =+ 1;
+        muj25++;
+    }
+    
+    if(sexo == 'h' && anos <= 18){
+        hom18++;
+    }
+    
+    if(sexo == "m"){
+        mujAge.push(anos);
+        mujeres++
+    }
+    let promAgeM = mujAge.reduce(
+        (suma, item) => suma + item, 0);
+    porcenMujAge = (promAgeM / mujeres);
+
+    if(sexo == "h"){
+        homAlt.push(altura);
+        hombres++
+    }
+    let promAltH = homAlt.reduce(
+        (suma, item) => suma + item, 0);
+    porcenHomAlt = (promAltH / hombres);
+
+
+for(let i = 0; i < edades.length; i++){
+    if(i == 0){
+        edadMin = edades[i];
+    }else if(i > 0){
+        if(edadMin > edades[i]){
+            edadMin = edades[i]
+        }
     }
 }
 
+for(let i = 0; i < medidas.length; i++){
+    if(i == 0){
+        medidaMax = medidas[i];
+    }else if(i > 0){
+        if(medidaMax < medidas[i]){
+            medidaMax = medidas[i]
+        }
+    }
+}
+
+
+}while(opcion == true)
+
+
 let porMay25 = (muj25 * 100) / total;
+let porMen18 = (hom18 * 100) / total;
+
 
 document.write(`total ${total} <br>
+A.<br>
 cant muj mayores 25: ${muj25}<br>
-porcentaje ${porMay25}%`)
+porcentaje: ${porMay25}%<br>
+B.<br>
+cant hom menores 18: ${hom18}<br>
+porcentaje: ${porMen18}% <br>
+C.<br>
+promedio edad mujeres: ${porcenMujAge}<br>
+D.<br>
+promedio altura hombres: ${porcenHomAlt}mts<br>
+E.<br>
+la edad minima es: ${edadMin}<br>
+F.<br>
+la mayor altura es: ${medidaMax}`);
+
+
+//falta validar
