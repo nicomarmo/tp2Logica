@@ -5,8 +5,13 @@ de edad y duplicar el regalo en cada cumpleaños subsiguiente hasta que el regal
  */
 
 let total = 0;
-
+let cantidadAnos = 0;
+let pagoAnterior = 5;
 do{
+    pagoAnterior = pagoAnterior * 2;
+    total += pagoAnterior;
+    cantidadAnos++
+}while(total <= 1000)
 
-
-}while(total >= 1000)
+document.write(`La edad que tiene la nena cuando tenga 1000 es ${cantidadAnos + 12} años <br>`);
+document.write(`El total acumulado es ${total}`)
