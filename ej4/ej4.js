@@ -109,4 +109,3 @@ function ej4(){
 
 
 
-//falta validar

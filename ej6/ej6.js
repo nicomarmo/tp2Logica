@@ -4,7 +4,7 @@ de edad y duplicar el regalo en cada cumpleaños subsiguiente hasta que el regal
 última cantidad y la cantidad total recibida.
  */
 function ej6(){
-    let total = 0;
+    let total = 10;
     let cantidadAnos = 0;
     let pagoAnterior = 5;
     do{
